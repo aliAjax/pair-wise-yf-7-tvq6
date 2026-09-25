@@ -184,14 +184,51 @@ h3 {
 
 .type-form {
   display: grid;
-  grid-template-columns: 52px 1fr 70px 72px;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-bottom: 12px;
 }
 
-.type-form select,
-.type-form button {
+.type-form input[maxlength] {
   grid-column: span 2;
+}
+
+.type-form select {
+  grid-column: auto;
+}
+
+.type-form button[type="submit"] {
+  grid-column: span 2;
+}
+
+.form-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  border-radius: 6px;
+  background: rgba(164, 64, 55, 0.1);
+  border: 1px solid rgba(164, 64, 55, 0.35);
+  color: var(--red);
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 7px 9px;
+}
+
+.notice {
+  margin: 0 0 10px;
+  border-radius: 6px;
+  background: rgba(183, 134, 44, 0.14);
+  border: 1px solid rgba(183, 134, 44, 0.5);
+  color: #7a5412;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 10px;
+}
+
+.hint {
+  margin: -4px 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .type-list {
@@ -234,7 +271,7 @@ h3 {
 
 .type-meta {
   display: grid;
-  gap: 2px;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -257,6 +294,79 @@ h3 {
   padding: 0;
   display: grid;
   place-items: center;
+}
+
+.type-card.blocked {
+  border-style: dashed;
+  border-color: rgba(183, 134, 44, 0.7);
+  background: #fdf6e7;
+  cursor: not-allowed;
+}
+
+.loc-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  border-radius: 5px;
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.loc-info.ok {
+  background: rgba(60, 112, 86, 0.1);
+  color: var(--green);
+}
+
+.loc-info.over {
+  background: rgba(164, 64, 55, 0.1);
+  color: var(--red);
+}
+
+.loc-info.missing {
+  background: rgba(183, 134, 44, 0.14);
+  color: #7a5412;
+}
+
+.loc-info .mini-btn {
+  width: auto;
+  height: auto;
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+.loc-edit {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.loc-edit input {
+  padding: 5px 6px;
+  font-size: 12px;
+}
+
+.card-error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--red);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.hold-reason {
+  grid-column: 1 / -1;
+  margin: 2px 0 0;
+  border-radius: 5px;
+  background: rgba(183, 134, 44, 0.12);
+  border-left: 3px solid var(--gold);
+  color: #6f4d11;
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 5px 7px;
 }
 
 .stage-wrap {
@@ -349,6 +459,108 @@ h3 {
 
 .cell.vertical {
   writing-mode: vertical-rl;
+}
+
+.cell.review {
+  outline: 2px dashed var(--gold);
+  outline-offset: -3px;
+}
+
+.pick-list {
+  display: grid;
+  gap: 10px;
+  max-height: 56vh;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.pick-group {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf8;
+  overflow: hidden;
+}
+
+.pick-group.has-review {
+  border-color: rgba(183, 134, 44, 0.7);
+}
+
+.pick-group.missing {
+  border-style: dashed;
+  border-color: rgba(183, 134, 44, 0.8);
+  background: #fdf6e7;
+}
+
+.pick-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 9px;
+  background: rgba(47, 41, 33, 0.07);
+  font-size: 13px;
+}
+
+.pick-head span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.pick-head.missing {
+  background: rgba(183, 134, 44, 0.16);
+  color: #7a5412;
+}
+
+.pick-head.missing span {
+  color: #7a5412;
+}
+
+.pick-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 9px;
+  border-top: 1px solid rgba(217, 202, 182, 0.6);
+  font-size: 13px;
+}
+
+.pick-row.review {
+  background: rgba(183, 134, 44, 0.08);
+  grid-template-columns: 28px 1fr auto auto;
+}
+
+.pick-glyph {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.pick-loc {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.pick-qty {
+  font-weight: 800;
+}
+
+.review-tag {
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.pick-note {
+  grid-column: 1 / -1;
+  color: #7a5412;
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .usage-list,

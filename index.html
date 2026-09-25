@@ -10,7 +10,7 @@
     <main class="shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">本地活字印章排版</p>
+          <p class="eyebrow">库位台账 · 取字单 · 本地存取</p>
           <h1>活字排版工坊</h1>
         </div>
         <div class="top-actions">
@@ -57,12 +57,16 @@
             <input id="styleInput" placeholder="风格" required />
             <input id="sizeInput" type="number" min="8" max="72" value="24" required />
             <input id="quantityInput" type="number" min="1" max="99" value="3" required />
+            <input id="cabinetInput" type="number" min="1" max="99" placeholder="柜号" title="柜号" required />
+            <input id="layerInput" type="number" min="1" max="99" placeholder="层号" title="层号" required />
+            <input id="cellInput" type="number" min="1" max="99" placeholder="格号" title="格号" required />
             <select id="wearInput">
               <option value="新">新</option>
               <option value="微磨">微磨</option>
               <option value="旧痕">旧痕</option>
             </select>
-            <button class="primary" type="submit">加入</button>
+            <button class="primary" type="submit">登记入位</button>
+            <p id="formNotice" class="form-error" hidden></p>
           </form>
           <div class="filter-row">
             <input id="inventorySearch" type="search" placeholder="搜索字或风格" />
@@ -77,19 +81,21 @@
           <div class="status-strip">
             <div>
               <strong id="selectedTypeLabel">未选择字模</strong>
-              <span>点击字模后，在版面格子中落字，也可拖拽字模到版面。</span>
+              <span>点击字模后，在版面格子中落字，也可拖拽字模到版面。缺库位或超容的字模不落字。</span>
             </div>
-            <div id="shortageBadge" class="badge ok">数量充足</div>
+            <div id="shortageBadge" class="badge ok">库位就绪</div>
           </div>
+          <p id="placeNotice" class="notice" hidden></p>
           <div id="stage" class="stage" aria-label="排版画布"></div>
         </section>
 
         <aside class="panel draft-panel">
           <div class="panel-head">
-            <h2>草稿与核对</h2>
+            <h2>取字单</h2>
             <span id="placedCount"></span>
           </div>
-          <div id="usageList" class="usage-list"></div>
+          <p class="hint">按版面已用字生成，同柜层合并枚数，依柜号 → 层号 → 格号排列。</p>
+          <div id="pickList" class="pick-list"></div>
           <div class="divider"></div>
           <h3>已保存草稿</h3>
           <div id="draftList" class="draft-list"></div>
